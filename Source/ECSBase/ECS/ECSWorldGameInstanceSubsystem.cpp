@@ -63,7 +63,6 @@ void UECSWorldGameInstanceSubsystem::FinishDestroy()
 
 void UECSWorldGameInstanceSubsystem::Tick(float DeltaTime)
 {
-	UE_LOG(LogTemp, Warning, TEXT("UECSWorldGameInstanceSubsystem tick %d. whenpaused? %d. ineditor? %d"), GFrameCounter, IsTickableWhenPaused(), IsTickableInEditor());
 	for (auto& system : ECSSystems)
 	{
 		system->Update(DeltaTime);

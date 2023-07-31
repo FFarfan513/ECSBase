@@ -17,7 +17,6 @@ MoveSystem2::~MoveSystem2()
 
 void MoveSystem2::Update(float DeltaTime)
 {
-	UE_LOG(LogTemp, Warning, TEXT("MoveSystem2 tick %d."), GFrameCounter);
 	for (auto& pair : Entities)
 	{
 		auto entity = pair.Value;
