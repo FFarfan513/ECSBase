@@ -14,5 +14,10 @@ class ECSBASE_API UBaseComponent : public UActorComponent
 public:
 	UBaseComponent();
 
-	//virtual SomeStruct Save() = 0;
+	//Get values of variables, put them into some kind of struct, then save them to the GameInstance.
+	virtual void SaveComponentData();
+
+	//virtual void LoadComponentData() = 0;
+
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 };

@@ -13,7 +13,7 @@ UMoveSystem::UMoveSystem()
 void UMoveSystem::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
+	UE_LOG(LogTemp, Warning, TEXT("MoveSystem ORIG tick"));
 	for (auto& pair : Entities)
 	{
 		auto entity = pair.Value;

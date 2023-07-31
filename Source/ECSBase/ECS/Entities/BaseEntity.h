@@ -26,16 +26,9 @@ public:
 		return FindComponentByClass<T>();
 	}
 
-	// Get info from entity, put it into a struct, and save it to GameInstance.
-	// Would need to have a Save on each component and then hold their member variables and values
-	//virtual void Save();
-
 protected:
 	UPROPERTY()
 	TSet<TSubclassOf<UBaseComponent>> Filter;
-
-	//UPROPERTY()
-	//TSet<TObjectPtr<UBaseComponent>> ECSComponents;
 
 	virtual void BeginPlay() override;
 

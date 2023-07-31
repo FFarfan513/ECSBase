@@ -6,3 +6,10 @@ UBaseComponent::UBaseComponent()
 {
 	PrimaryComponentTick.bCanEverTick = false;
 }
+
+void UBaseComponent::SaveComponentData() { }
+
+void UBaseComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	SaveComponentData();
+}

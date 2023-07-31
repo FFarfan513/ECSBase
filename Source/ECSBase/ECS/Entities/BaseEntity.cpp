@@ -1,7 +1,8 @@
 // Fill out your copyright notice in the Description page of Project
 
 #include "BaseEntity.h"
-#include <ECSBase/ECS/ECSWorldGameInstance.h>
+#include <ECSBase/ECS/ECSWorldGameInstanceSubsystem.h>
+//#include <ECSBase/ECS/ECSWorldGameInstance.h>
 
 ABaseEntity::ABaseEntity()
 {
@@ -18,29 +19,17 @@ const TSet<TSubclassOf<UBaseComponent>>& ABaseEntity::GetFilter()
 void ABaseEntity::BeginPlay()
 {
 	Super::BeginPlay();
-	auto world = GETECSWORLD();
-	if (world.IsValid())
-	{
-		SetFilterTypes();
-		world->AddEntity(this);
-		UE_LOG(LogTemp, Warning, TEXT("entity beginplay"));
-		//// if gameinstance has saved data:
-		//for (auto& component : ECSComponents)
-		//{
-		//	// populate saved data for each component
-		//}
-	}
+
+	SetFilterTypes();
+	GETECSWORLD2()->AddEntity(this);
+	//UE_LOG(LogTemp, Warning, TEXT("entity beginplay"));
 }
 
 void ABaseEntity::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
 	Super::EndPlay(EndPlayReason);
 	//UE_LOG(LogTemp, Warning, TEXT("EndPlay for Entity %s"), *ID);
-	auto world = GETECSWORLD();
-	if (world.IsValid())
-	{
-		world->RemoveEntity(ID);
-	}
+	GETECSWORLD2()->RemoveEntity(ID);
 	Filter.Empty();
 }
 
@@ -52,10 +41,10 @@ void ABaseEntity::SetFilterTypes()
 		if (unrealComponent->IsA(UBaseComponent::StaticClass()))
 		{
 			Filter.Add(unrealComponent->GetClass());
-			//ECSComponents.Add(Cast<UBaseComponent>(unrealComponent));
 
-			// or maybe check save data here to avoid needing to store the ecs components in a separate collection?
-			// hmmmmm
+			// if gameinstance has saved data:
+			//auto base = Cast<UBaseComponent>(unrealComponent);
+			//base->LoadComponentData();
 		}
 	}
 }
