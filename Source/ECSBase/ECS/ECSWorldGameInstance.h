@@ -6,8 +6,6 @@
 #include "Engine/GameInstance.h"
 #include "ECSWorldGameInstance.generated.h"
 
-#define GETECSWORLD() GetWorld()->GetGameInstance<UECSWorldGameInstance>()->GetECSWorld()
-
 UCLASS()
 class ECSBASE_API UECSWorldGameInstance : public UGameInstance
 {
@@ -19,5 +17,4 @@ public:
 	virtual void Init() override;
 
 	virtual void Shutdown() override;
-
 };

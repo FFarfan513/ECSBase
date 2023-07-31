@@ -1,21 +1,22 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "MoveSystem2.h"
+#include "MoveSystem.h"
 #include <ECSBase/ECS/Components/MoveComponent.h>
 
-MoveSystem2::MoveSystem2()
+MoveSystem::MoveSystem()
 {
 	UE_LOG(LogTemp, Warning, TEXT("MoveSystem2 create"));
 	Filter.Add(UMoveComponent::StaticClass());
 }
 
-MoveSystem2::~MoveSystem2()
+MoveSystem::~MoveSystem()
 {
 	UE_LOG(LogTemp, Warning, TEXT("MoveSystem2 delete"));
+	Filter.Empty();
 }
 
-void MoveSystem2::Update(float DeltaTime)
+void MoveSystem::Update(float DeltaTime)
 {
 	for (auto& pair : Entities)
 	{

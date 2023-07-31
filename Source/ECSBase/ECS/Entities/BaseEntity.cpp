@@ -1,8 +1,7 @@
 // Fill out your copyright notice in the Description page of Project
 
 #include "BaseEntity.h"
-#include <ECSBase/ECS/ECSWorldGameInstanceSubsystem.h>
-//#include <ECSBase/ECS/ECSWorldGameInstance.h>
+#include <ECSBase/ECS/ECSWorld.h>
 
 ABaseEntity::ABaseEntity()
 {
@@ -21,15 +20,15 @@ void ABaseEntity::BeginPlay()
 	Super::BeginPlay();
 
 	SetFilterTypes();
-	GETECSWORLD2()->AddEntity(this);
-	//UE_LOG(LogTemp, Warning, TEXT("entity beginplay"));
+	GETECSWORLD()->AddEntity(this);
+	//UE_LOG(LogTemp, Warning, TEXT("BeginPlay for Entity %s"), *ID);
 }
 
 void ABaseEntity::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
 	Super::EndPlay(EndPlayReason);
 	//UE_LOG(LogTemp, Warning, TEXT("EndPlay for Entity %s"), *ID);
-	GETECSWORLD2()->RemoveEntity(ID);
+	GETECSWORLD()->RemoveEntity(ID);
 	Filter.Empty();
 }
 

@@ -6,7 +6,7 @@
 #include <ECSBase/ECS/Components/BaseComponent.h>
 #include <ECSBase/ECS/Entities/BaseEntity.h>
 
-class ECSBASE_API BaseSystem2
+class ECSBASE_API BaseSystem
 {
 public:
 	UPROPERTY()
@@ -14,7 +14,7 @@ public:
 
 	const TSet<TSubclassOf<UBaseComponent>>& GetFilter();
 
-	virtual ~BaseSystem2();
+	virtual ~BaseSystem();
 
 	virtual void Update(float DeltaTime) = 0;
 

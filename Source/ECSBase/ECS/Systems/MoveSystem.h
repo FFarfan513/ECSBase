@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "BaseSystem2.h"
+#include "BaseSystem.h"
 
-class ECSBASE_API MoveSystem2 : public BaseSystem2
+class ECSBASE_API MoveSystem : public BaseSystem
 {
 public:
-	MoveSystem2();
+	MoveSystem();
 
-	~MoveSystem2();
+	~MoveSystem();
 
 	virtual void Update(float DeltaTime) override;
 };

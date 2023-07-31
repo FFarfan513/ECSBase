@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "Subsystems/GameInstanceSubsystem.h"
-#include "Systems/BaseSystem2.h"
-#include "ECSWorldGameInstanceSubsystem.generated.h"
+#include "Systems/BaseSystem.h"
+#include "ECSWorld.generated.h"
 
-#define GETECSWORLD2() GetWorld()->GetGameInstance()->GetSubsystem<UECSWorldGameInstanceSubsystem>()
+#define GETECSWORLD() GetWorld()->GetGameInstance()->GetSubsystem<UECSWorld>()
 
 UCLASS()
-class ECSBASE_API UECSWorldGameInstanceSubsystem : public UGameInstanceSubsystem, public FTickableGameObject
+class ECSBASE_API UECSWorld : public UGameInstanceSubsystem, public FTickableGameObject
 {
 	GENERATED_BODY()
 	
@@ -31,7 +31,7 @@ public:
 	virtual bool IsAllowedToTick() const { return initialized; }
 
 protected:
-	TArray<TUniquePtr<BaseSystem2>> ECSSystems;
+	TArray<TUniquePtr<BaseSystem>> ECSSystems;
 
 	UPROPERTY()
 	TMap<FString, TObjectPtr<ABaseEntity>> ECSEntities;
@@ -39,5 +39,5 @@ protected:
 private:
 	bool initialized = false;
 
-	bool SystemShouldContainEntity(const TUniquePtr<BaseSystem2>& system, const TObjectPtr<ABaseEntity>& entity);
+	bool SystemShouldContainEntity(const TUniquePtr<BaseSystem>& system, const TObjectPtr<ABaseEntity>& entity);
 };

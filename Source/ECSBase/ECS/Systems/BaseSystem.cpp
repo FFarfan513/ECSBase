@@ -1,14 +1,14 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "BaseSystem2.h"
+#include "BaseSystem.h"
 
-BaseSystem2::~BaseSystem2()
+BaseSystem::~BaseSystem()
 {
 	Filter.Empty();
 }
 
-const TSet<TSubclassOf<UBaseComponent>>& BaseSystem2::GetFilter()
+const TSet<TSubclassOf<UBaseComponent>>& BaseSystem::GetFilter()
 {
 	return Filter;
 }

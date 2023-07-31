@@ -1,15 +1,15 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "ECSWorldGameInstanceSubsystem.h"
-#include "Systems/MoveSystem2.h"
+#include "ECSWorld.h"
+#include "Systems/MoveSystem.h"
 
-TWeakObjectPtr<ABaseEntity> UECSWorldGameInstanceSubsystem::GetEntity(FString id)
+TWeakObjectPtr<ABaseEntity> UECSWorld::GetEntity(FString id)
 {
 	return ECSEntities.FindRef(id);
 }
 
-void UECSWorldGameInstanceSubsystem::AddEntity(TObjectPtr<ABaseEntity> entity)
+void UECSWorld::AddEntity(TObjectPtr<ABaseEntity> entity)
 {
 	if (ECSEntities.Contains(entity->ID))
 	{
@@ -28,7 +28,7 @@ void UECSWorldGameInstanceSubsystem::AddEntity(TObjectPtr<ABaseEntity> entity)
 	}
 }
 
-void UECSWorldGameInstanceSubsystem::RemoveEntity(FString id)
+void UECSWorld::RemoveEntity(FString id)
 {
 	if (ECSEntities.Contains(id))
 	{
@@ -40,28 +40,28 @@ void UECSWorldGameInstanceSubsystem::RemoveEntity(FString id)
 	}
 }
 
-void UECSWorldGameInstanceSubsystem::Initialize(FSubsystemCollectionBase& Collection)
+void UECSWorld::Initialize(FSubsystemCollectionBase& Collection)
 {
-	UE_LOG(LogTemp, Warning, TEXT("UECSWorldGameInstanceSubsystem initialize"));
-	ECSSystems.Emplace(MakeUnique<MoveSystem2>());
+	UE_LOG(LogTemp, Warning, TEXT("ECSWorld initialize"));
+	ECSSystems.Emplace(MakeUnique<MoveSystem>());
 	initialized = true;
 }
 
-void UECSWorldGameInstanceSubsystem::Deinitialize()
+void UECSWorld::Deinitialize()
 {
 	initialized = false;
-	UE_LOG(LogTemp, Warning, TEXT("UECSWorldGameInstanceSubsystem Deinitialize"));
+	UE_LOG(LogTemp, Warning, TEXT("ECSWorld Deinitialize"));
 }
 
-void UECSWorldGameInstanceSubsystem::FinishDestroy()
+void UECSWorld::FinishDestroy()
 {
-	UE_LOG(LogTemp, Warning, TEXT("UECSWorldGameInstanceSubsystem FinishDestroy"));
+	UE_LOG(LogTemp, Warning, TEXT("ECSWorld FinishDestroy"));
 	ECSEntities.Empty();
 	ECSSystems.Empty();
 	Super::FinishDestroy();
 }
 
-void UECSWorldGameInstanceSubsystem::Tick(float DeltaTime)
+void UECSWorld::Tick(float DeltaTime)
 {
 	for (auto& system : ECSSystems)
 	{
@@ -69,7 +69,7 @@ void UECSWorldGameInstanceSubsystem::Tick(float DeltaTime)
 	}
 }
 
-bool UECSWorldGameInstanceSubsystem::SystemShouldContainEntity(const TUniquePtr<BaseSystem2>& system, const TObjectPtr<ABaseEntity>& entity)
+bool UECSWorld::SystemShouldContainEntity(const TUniquePtr<BaseSystem>& system, const TObjectPtr<ABaseEntity>& entity)
 {
 	auto& entityFilter = entity->GetFilter();
 	auto& systemFilter = system->GetFilter();
