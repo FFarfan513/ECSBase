@@ -6,6 +6,5 @@ void UMoveComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	UE_LOG(LogTemp, Warning, TEXT("move comp beginplay"));
 	CurrentLocation = GetOwner()->GetActorLocation();
 }

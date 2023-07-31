@@ -10,7 +10,5 @@ class ECSBASE_API MoveSystem : public BaseSystem
 public:
 	MoveSystem();
 
-	~MoveSystem();
-
 	virtual void Update(float DeltaTime) override;
 };

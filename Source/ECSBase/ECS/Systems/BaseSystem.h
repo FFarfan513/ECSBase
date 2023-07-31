@@ -9,8 +9,9 @@
 class ECSBASE_API BaseSystem
 {
 public:
-	UPROPERTY()
-	TMap<FString, TObjectPtr<ABaseEntity>> Entities;
+	void AddEntity(TObjectPtr<ABaseEntity> entity);
+
+	void RemoveEntity(FString id);
 
 	const TSet<TSubclassOf<UBaseComponent>>& GetFilter();
 
@@ -19,6 +20,9 @@ public:
 	virtual void Update(float DeltaTime) = 0;
 
 protected:
+	UPROPERTY()
+	TMap<FString, TObjectPtr<ABaseEntity>> Entities;
+
 	UPROPERTY()
 	TSet<TSubclassOf<UBaseComponent>> Filter;
 };

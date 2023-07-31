@@ -1,6 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "ECSWorld.h"
 #include "Systems/MoveSystem.h"
 
@@ -23,7 +22,7 @@ void UECSWorld::AddEntity(TObjectPtr<ABaseEntity> entity)
 	{
 		if (SystemShouldContainEntity(system, entity))
 		{
-			system->Entities.Add(entity->ID, entity);
+			system->AddEntity(entity);
 		}
 	}
 }
@@ -34,7 +33,7 @@ void UECSWorld::RemoveEntity(FString id)
 	{
 		for (auto& system : ECSSystems)
 		{
-			system->Entities.Remove(id);
+			system->RemoveEntity(id);
 		}
 		ECSEntities.Remove(id);
 	}
@@ -42,7 +41,6 @@ void UECSWorld::RemoveEntity(FString id)
 
 void UECSWorld::Initialize(FSubsystemCollectionBase& Collection)
 {
-	UE_LOG(LogTemp, Warning, TEXT("ECSWorld initialize"));
 	ECSSystems.Emplace(MakeUnique<MoveSystem>());
 	initialized = true;
 }
@@ -50,12 +48,10 @@ void UECSWorld::Initialize(FSubsystemCollectionBase& Collection)
 void UECSWorld::Deinitialize()
 {
 	initialized = false;
-	UE_LOG(LogTemp, Warning, TEXT("ECSWorld Deinitialize"));
 }
 
 void UECSWorld::FinishDestroy()
 {
-	UE_LOG(LogTemp, Warning, TEXT("ECSWorld FinishDestroy"));
 	ECSEntities.Empty();
 	ECSSystems.Empty();
 	Super::FinishDestroy();

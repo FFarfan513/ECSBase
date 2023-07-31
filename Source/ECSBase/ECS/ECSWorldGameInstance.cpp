@@ -5,7 +5,6 @@
 void UECSWorldGameInstance::Init()
 {
 	Super::Init();
-	UE_LOG(LogTemp, Warning, TEXT("GameInstance initialize"));
 }
 
 void UECSWorldGameInstance::Shutdown()

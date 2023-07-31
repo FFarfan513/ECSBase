@@ -21,13 +21,11 @@ void ABaseEntity::BeginPlay()
 
 	SetFilterTypes();
 	GETECSWORLD()->AddEntity(this);
-	//UE_LOG(LogTemp, Warning, TEXT("BeginPlay for Entity %s"), *ID);
 }
 
 void ABaseEntity::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
 	Super::EndPlay(EndPlayReason);
-	//UE_LOG(LogTemp, Warning, TEXT("EndPlay for Entity %s"), *ID);
 	GETECSWORLD()->RemoveEntity(ID);
 	Filter.Empty();
 }
