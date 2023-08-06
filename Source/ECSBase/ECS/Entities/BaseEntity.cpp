@@ -10,11 +10,6 @@ ABaseEntity::ABaseEntity()
 	//ID = GetPathName();
 }
 
-const TSet<TSubclassOf<UBaseComponent>>& ABaseEntity::GetFilter()
-{
-	return Filter;
-}
-
 void ABaseEntity::BeginPlay()
 {
 	Super::BeginPlay();

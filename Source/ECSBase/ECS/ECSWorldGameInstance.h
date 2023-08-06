@@ -23,8 +23,13 @@ public:
 
 	TArray<uint8> LoadComponent(FString componentName);
 
+	//// TODO: save savedComponentData contents to file
+	//void SaveGame();
+
+	//// TODO: populate savedComponentData from save file
+	//void LoadGame();
+
 protected:
-	// Save this map to file when game saves. When game loads, populate this map from file
 	UPROPERTY(SaveGame)
 	TMap<FString, FBinaryDataHolder> savedComponentData;
 };

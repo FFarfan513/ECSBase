@@ -14,11 +14,14 @@ class ECSBASE_API UBaseComponent : public UActorComponent
 public:
 	UBaseComponent();
 
-	FString GetID();
+	FString GetComponentID() const { return ComponentID; }
 
 	virtual void ReadWriteBinary(FArchive& archive);
 	
 	virtual void BeginPlay() override;
 
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+
+protected:
+	FString ComponentID;
 };

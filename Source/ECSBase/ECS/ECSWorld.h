@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Subsystems/GameInstanceSubsystem.h"
+#include "Entities/BaseEntity.h"
 #include "Systems/BaseSystem.h"
 #include "ECSWorld.generated.h"
 
@@ -16,7 +17,7 @@ class ECSBASE_API UECSWorld : public UGameInstanceSubsystem, public FTickableGam
 	
 public:
 	TWeakObjectPtr<ABaseEntity> GetEntity(FString id);
-	void AddEntity(TObjectPtr<ABaseEntity> entity);
+	void AddEntity(const TObjectPtr<ABaseEntity> entity);
 	void RemoveEntity(FString id);
 
 	void Initialize(FSubsystemCollectionBase& Collection) override;

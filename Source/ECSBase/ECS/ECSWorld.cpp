@@ -1,22 +1,22 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "ECSWorld.h"
-#include "Systems/MoveSystem.h"
+#include "ECSSystemLoader.h"
 
 TWeakObjectPtr<ABaseEntity> UECSWorld::GetEntity(FString id)
 {
 	return ECSEntities.FindRef(id);
 }
 
-void UECSWorld::AddEntity(TObjectPtr<ABaseEntity> entity)
+void UECSWorld::AddEntity(const TObjectPtr<ABaseEntity> entity)
 {
-	if (ECSEntities.Contains(entity->ID))
+	FString entityID = entity->GetEntityID();
+	if (ECSEntities.Contains(entityID))
 	{
-		UE_LOG(LogTemp, Error, TEXT("Attempting to add entity with duplicate ID '%s'"), *entity->ID);
 		return;
 	}
 
-	ECSEntities.Add(entity->ID, entity);
+	ECSEntities.Add(entityID, entity);
 
 	for (auto& system : ECSSystems)
 	{
@@ -41,12 +41,14 @@ void UECSWorld::RemoveEntity(FString id)
 
 void UECSWorld::Initialize(FSubsystemCollectionBase& Collection)
 {
-	ECSSystems.Emplace(MakeUnique<MoveSystem>());
+	Super::Initialize(Collection);
+	ECSSystemLoader::LoadECSSystems(ECSSystems);
 	initialized = true;
 }
 
 void UECSWorld::Deinitialize()
 {
+	Super::Deinitialize();
 	initialized = false;
 }
 

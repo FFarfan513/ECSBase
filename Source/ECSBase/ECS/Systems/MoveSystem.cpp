@@ -13,7 +13,7 @@ void MoveSystem::Update(float DeltaTime)
 	for (auto& pair : Entities)
 	{
 		auto entity = pair.Value;
-		UMoveComponent* moveComp = entity->GetECSComponent<UMoveComponent>();
+		auto moveComp = entity->GetECSComponent<UMoveComponent>();
 
 		FVector heading = moveComp->Direction * moveComp->Speed * DeltaTime;
 		entity->SetActorLocation(moveComp->CurrentLocation + heading);

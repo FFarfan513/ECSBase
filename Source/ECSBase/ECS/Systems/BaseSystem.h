@@ -11,9 +11,9 @@ class ECSBASE_API BaseSystem
 public:
 	void AddEntity(TObjectPtr<ABaseEntity> entity);
 
-	void RemoveEntity(FString id);
+	int32 RemoveEntity(FString id);
 
-	const TSet<TSubclassOf<UBaseComponent>>& GetFilter();
+	const TSet<TSubclassOf<UBaseComponent>>& GetFilter() const { return Filter; }
 
 	virtual ~BaseSystem();
 

@@ -13,12 +13,11 @@ class ECSBASE_API ABaseEntity : public AActor
 	GENERATED_BODY()
 	
 public:
-	UPROPERTY(EditAnywhere)
-	FString ID;
-
 	ABaseEntity();
 
-	const TSet<TSubclassOf<UBaseComponent>>& GetFilter();
+	const FString GetEntityID() const { return ID; }
+
+	const TSet<TSubclassOf<UBaseComponent>>& GetFilter() const { return Filter; }
 
 	template<class T> TObjectPtr<T> GetECSComponent() const
 	{
@@ -27,6 +26,9 @@ public:
 	}
 
 protected:
+	UPROPERTY(EditAnywhere)
+	FString ID;
+
 	UPROPERTY()
 	TSet<TSubclassOf<UBaseComponent>> Filter;
 

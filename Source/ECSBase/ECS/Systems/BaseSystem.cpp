@@ -4,22 +4,18 @@
 
 void BaseSystem::AddEntity(TObjectPtr<ABaseEntity> entity)
 {
-	if (Entities.Contains(entity->ID))
+	FString entityID = entity->GetEntityID();
+	if (Entities.Contains(entityID))
 	{
-		UE_LOG(LogTemp, Error, TEXT("Attempting to add entity to System with duplicate ID '%s'"), *entity->ID);
+		UE_LOG(LogTemp, Error, TEXT("Attempting to add entity to System with duplicate ID '%s'"), *entityID);
 		return;
 	}
-	Entities.Add(entity->ID, entity);
+	Entities.Add(entityID, entity);
 }
 
-void BaseSystem::RemoveEntity(FString id)
+int32 BaseSystem::RemoveEntity(FString id)
 {
-	Entities.Remove(id);
-}
-
-const TSet<TSubclassOf<UBaseComponent>>& BaseSystem::GetFilter()
-{
-	return Filter;
+	return Entities.Remove(id);
 }
 
 BaseSystem::~BaseSystem()
