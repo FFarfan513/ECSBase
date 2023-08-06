@@ -14,14 +14,20 @@ void UECSWorldGameInstance::Shutdown()
 
 void UECSWorldGameInstance::SaveComponent(FString componentName, TArray<uint8> binaryData)
 {
-	savedComponentData.Emplace(componentName, FBinaryDataHolder(binaryData));
+	if (!componentName.IsEmpty())
+	{
+		savedComponentData.Emplace(componentName, FBinaryDataHolder(binaryData));
+	}
 }
 
 TArray<uint8> UECSWorldGameInstance::LoadComponent(FString componentName)
 {
-	if (auto found = savedComponentData.Find(componentName))
+	if (!componentName.IsEmpty())
 	{
-		return found->data;
+		if (auto found = savedComponentData.Find(componentName))
+		{
+			return found->Data;
+		}
 	}
 	return TArray<uint8>();
 }

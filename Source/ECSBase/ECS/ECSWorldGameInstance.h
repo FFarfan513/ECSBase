@@ -24,6 +24,7 @@ public:
 	TArray<uint8> LoadComponent(FString componentName);
 
 protected:
-	UPROPERTY()
+	// Save this map to file when game saves. When game loads, populate this map from file
+	UPROPERTY(SaveGame)
 	TMap<FString, FBinaryDataHolder> savedComponentData;
 };

@@ -16,6 +16,7 @@ FString UBaseComponent::GetID()
 		return entity->ID + GetName();
 	}
 
+	UE_LOG(LogTemp, Error, TEXT("Actor '%s' is not of type BaseEntity"), *GetOwner()->GetFullName());
 	return FString();
 }
 
@@ -26,7 +27,7 @@ void UBaseComponent::BeginPlay()
 	Super::BeginPlay();
 
 	TArray<uint8> componentData = GETECSGAMEINSTANCE()->LoadComponent(GetID());
-	if (componentData.Num() > 0)
+	if (!componentData.IsEmpty())
 	{
 		FMemoryReader reader(componentData);
 		ReadWriteBinary(reader);

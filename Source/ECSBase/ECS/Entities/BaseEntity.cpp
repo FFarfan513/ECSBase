@@ -38,10 +38,6 @@ void ABaseEntity::SetFilterTypes()
 		if (unrealComponent->IsA(UBaseComponent::StaticClass()))
 		{
 			Filter.Add(unrealComponent->GetClass());
-
-			// if gameinstance has saved data:
-			//auto base = Cast<UBaseComponent>(unrealComponent);
-			//base->LoadComponentData();
 		}
 	}
 }
