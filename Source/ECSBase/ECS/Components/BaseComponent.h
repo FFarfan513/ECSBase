@@ -14,10 +14,11 @@ class ECSBASE_API UBaseComponent : public UActorComponent
 public:
 	UBaseComponent();
 
-	//Get values of variables, put them into some kind of struct, then save them to the GameInstance.
-	virtual void SaveComponentData();
+	FString GetID();
 
-	//virtual void LoadComponentData() = 0;
+	virtual void ReadWriteBinary(FArchive& archive);
+	
+	virtual void BeginPlay() override;
 
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 };

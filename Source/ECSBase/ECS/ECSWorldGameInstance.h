@@ -4,7 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
+#include "Components/BinaryDataHolder.h"
 #include "ECSWorldGameInstance.generated.h"
+
+#define GETECSGAMEINSTANCE() GetWorld()->GetGameInstance<UECSWorldGameInstance>()
 
 UCLASS()
 class ECSBASE_API UECSWorldGameInstance : public UGameInstance
@@ -12,9 +15,15 @@ class ECSBASE_API UECSWorldGameInstance : public UGameInstance
 	GENERATED_BODY()
 
 public:
-	//hold saved entity data somehow
-
 	virtual void Init() override;
 
 	virtual void Shutdown() override;
+
+	void SaveComponent(FString componentName, TArray<uint8> binaryData);
+
+	TArray<uint8> LoadComponent(FString componentName);
+
+protected:
+	UPROPERTY()
+	TMap<FString, FBinaryDataHolder> savedComponentData;
 };
