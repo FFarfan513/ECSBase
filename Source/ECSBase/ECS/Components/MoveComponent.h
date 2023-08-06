@@ -23,6 +23,7 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	FVector CurrentLocation;
 
-protected:
 	virtual void BeginPlay() override;
+
+	virtual void ReadWriteBinary(FArchive& archive) override;
 };

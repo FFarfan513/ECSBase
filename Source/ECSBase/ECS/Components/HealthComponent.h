@@ -16,4 +16,6 @@ class ECSBASE_API UHealthComponent : public UBaseComponent
 public:
 	UPROPERTY(EditAnywhere)
 	int Health;
+
+	virtual void ReadWriteBinary(FArchive& archive) override;
 };

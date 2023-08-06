@@ -4,7 +4,13 @@
 
 void UMoveComponent::BeginPlay()
 {
-	Super::BeginPlay();
-
 	CurrentLocation = GetOwner()->GetActorLocation();
+	Super::BeginPlay();
+}
+
+void UMoveComponent::ReadWriteBinary(FArchive& archive)
+{
+	archive << this->Speed;
+	archive << this->Direction;
+	archive << this->CurrentLocation;
 }
