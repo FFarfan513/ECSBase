@@ -9,13 +9,13 @@
 class ECSBASE_API BaseSystem
 {
 public:
+	virtual ~BaseSystem();
+
 	void AddEntity(TObjectPtr<ABaseEntity> entity);
 
 	int32 RemoveEntity(FString id);
 
-	const TSet<TSubclassOf<UBaseComponent>>& GetFilter() const { return Filter; }
-
-	virtual ~BaseSystem();
+	FORCEINLINE const TSet<TSubclassOf<UBaseComponent>>& GetFilter() const { return Filter; }
 
 	virtual void Update(float DeltaTime) = 0;
 

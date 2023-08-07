@@ -14,5 +14,11 @@ public:
 
 	FBinaryDataHolder(TArray<uint8> binaryData);
 
+	~FBinaryDataHolder();
+
+	FORCEINLINE const TArray<uint8> GetBinaryData() const { return Data; }
+
+protected:
+	UPROPERTY()
 	TArray<uint8> Data;
 };

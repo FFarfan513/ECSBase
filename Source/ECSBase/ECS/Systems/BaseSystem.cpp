@@ -2,6 +2,11 @@
 
 #include "BaseSystem.h"
 
+BaseSystem::~BaseSystem()
+{
+	Filter.Empty();
+}
+
 void BaseSystem::AddEntity(TObjectPtr<ABaseEntity> entity)
 {
 	FString entityID = entity->GetEntityID();
@@ -16,9 +21,4 @@ void BaseSystem::AddEntity(TObjectPtr<ABaseEntity> entity)
 int32 BaseSystem::RemoveEntity(FString id)
 {
 	return Entities.Remove(id);
-}
-
-BaseSystem::~BaseSystem()
-{
-	Filter.Empty();
 }

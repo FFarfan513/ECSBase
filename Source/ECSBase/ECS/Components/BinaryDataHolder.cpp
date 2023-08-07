@@ -6,3 +6,8 @@ FBinaryDataHolder::FBinaryDataHolder(TArray<uint8> binaryData)
 {
 	Data = binaryData;
 }
+
+FBinaryDataHolder::~FBinaryDataHolder()
+{
+	Data.Empty();
+}

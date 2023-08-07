@@ -17,5 +17,5 @@ public:
 	UPROPERTY(EditAnywhere)
 	int Health;
 
-	virtual void ReadWriteBinary(FArchive& archive) override;
+	void ReadWriteBinary(FArchive& archive) override;
 };

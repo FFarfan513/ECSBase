@@ -15,9 +15,9 @@ class ECSBASE_API ABaseEntity : public AActor
 public:
 	ABaseEntity();
 
-	const FString GetEntityID() const { return ID; }
+	FORCEINLINE const FString GetEntityID() const { return ID; }
 
-	const TSet<TSubclassOf<UBaseComponent>>& GetFilter() const { return Filter; }
+	FORCEINLINE const TSet<TSubclassOf<UBaseComponent>>& GetFilter() const { return Filter; }
 
 	template<class T> TObjectPtr<T> GetECSComponent() const
 	{

@@ -25,5 +25,5 @@ public:
 
 	virtual void BeginPlay() override;
 
-	virtual void ReadWriteBinary(FArchive& archive) override;
+	void ReadWriteBinary(FArchive& archive) override;
 };

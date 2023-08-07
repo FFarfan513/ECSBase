@@ -26,7 +26,7 @@ TArray<uint8> UECSWorldGameInstance::LoadComponent(FString componentName)
 	{
 		if (auto found = savedComponentData.Find(componentName))
 		{
-			return found->Data;
+			return found->GetBinaryData();
 		}
 	}
 	return TArray<uint8>();
