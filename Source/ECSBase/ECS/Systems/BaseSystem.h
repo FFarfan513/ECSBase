@@ -11,7 +11,7 @@ class ECSBASE_API BaseSystem
 public:
 	virtual ~BaseSystem();
 
-	void AddEntity(TObjectPtr<ABaseEntity> entity);
+	void AddEntity(const TObjectPtr<ABaseEntity>& entity);
 
 	int32 RemoveEntity(FString id);
 

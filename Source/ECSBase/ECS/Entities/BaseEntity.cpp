@@ -27,12 +27,11 @@ void ABaseEntity::EndPlay(const EEndPlayReason::Type EndPlayReason)
 
 void ABaseEntity::SetFilterTypes()
 {
-	auto& unrealComponents = GetComponents();
-	for (auto& unrealComponent : unrealComponents)
+	TInlineComponentArray<TObjectPtr<UBaseComponent>> ecsComponents;
+	GetComponents(ecsComponents);
+
+	for (auto& component : ecsComponents)
 	{
-		if (unrealComponent->IsA(UBaseComponent::StaticClass()))
-		{
-			Filter.Add(unrealComponent->GetClass());
-		}
+		Filter.Add(component->GetClass());
 	}
 }

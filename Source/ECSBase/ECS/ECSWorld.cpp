@@ -8,7 +8,7 @@ TWeakObjectPtr<ABaseEntity> UECSWorld::GetEntity(FString id)
 	return ECSEntities.FindRef(id);
 }
 
-void UECSWorld::AddEntity(const TObjectPtr<ABaseEntity> entity)
+void UECSWorld::AddEntity(const TObjectPtr<ABaseEntity>& entity)
 {
 	FString entityID = entity->GetEntityID();
 	if (ECSEntities.Contains(entityID))
@@ -67,7 +67,7 @@ void UECSWorld::Tick(float DeltaTime)
 	}
 }
 
-bool UECSWorld::SystemShouldContainEntity(const TUniquePtr<BaseSystem>& system, const TObjectPtr<ABaseEntity>& entity)
+bool UECSWorld::SystemShouldContainEntity(const TUniquePtr<BaseSystem>& system, const TObjectPtr<ABaseEntity>& entity) const
 {
 	auto& entityFilter = entity->GetFilter();
 	auto& systemFilter = system->GetFilter();

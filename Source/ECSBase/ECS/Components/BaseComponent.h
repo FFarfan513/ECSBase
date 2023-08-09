@@ -23,6 +23,6 @@ public:
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
 protected:
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 	FString ComponentID;
 };

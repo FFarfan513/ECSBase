@@ -7,7 +7,7 @@ BaseSystem::~BaseSystem()
 	Filter.Empty();
 }
 
-void BaseSystem::AddEntity(TObjectPtr<ABaseEntity> entity)
+void BaseSystem::AddEntity(const TObjectPtr<ABaseEntity>& entity)
 {
 	FString entityID = entity->GetEntityID();
 	if (Entities.Contains(entityID))

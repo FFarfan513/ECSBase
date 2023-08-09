@@ -17,7 +17,7 @@ class ECSBASE_API UECSWorld : public UGameInstanceSubsystem, public FTickableGam
 	
 public:
 	TWeakObjectPtr<ABaseEntity> GetEntity(FString id);
-	void AddEntity(const TObjectPtr<ABaseEntity> entity);
+	void AddEntity(const TObjectPtr<ABaseEntity>& entity);
 	void RemoveEntity(FString id);
 
 	void Initialize(FSubsystemCollectionBase& Collection) override;
@@ -28,8 +28,8 @@ public:
 
 	virtual TStatId GetStatId() const override { return TStatId(); }
 	virtual UWorld* GetTickableGameObjectWorld() const override { return GetWorld(); }
-	virtual bool IsTickable() const { return initialized; }
-	virtual bool IsAllowedToTick() const { return initialized; }
+	virtual bool IsTickable() const override { return initialized; }
+	virtual bool IsAllowedToTick() const override { return initialized; }
 
 protected:
 	TArray<TUniquePtr<BaseSystem>> ECSSystems;
@@ -40,5 +40,5 @@ protected:
 private:
 	bool initialized = false;
 
-	bool SystemShouldContainEntity(const TUniquePtr<BaseSystem>& system, const TObjectPtr<ABaseEntity>& entity);
+	bool SystemShouldContainEntity(const TUniquePtr<BaseSystem>& system, const TObjectPtr<ABaseEntity>& entity) const;
 };
