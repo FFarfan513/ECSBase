@@ -20,7 +20,7 @@ void UBaseComponent::BeginPlay()
 		FString entityID = entity->GetEntityID();
 		if (!entityID.IsEmpty())
 		{
-			ComponentID = entityID + GetName();
+			ComponentID = entityID + "|" + GetClass()->GetName();
 		}
 		else
 		{
