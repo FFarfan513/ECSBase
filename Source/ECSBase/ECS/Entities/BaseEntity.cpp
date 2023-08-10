@@ -6,8 +6,6 @@
 ABaseEntity::ABaseEntity()
 {
 	PrimaryActorTick.bCanEverTick = false;
-
-	//ID = GetPathName();
 }
 
 void ABaseEntity::BeginPlay()

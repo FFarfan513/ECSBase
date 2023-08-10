@@ -26,7 +26,7 @@ public:
 	}
 
 protected:
-	UPROPERTY(EditAnywhere, DuplicateTransient)
+	UPROPERTY(EditAnywhere)
 	FString ID;
 
 	virtual void BeginPlay() override;
