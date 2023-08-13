@@ -14,7 +14,7 @@ class ECSBASE_API UHealthComponent : public UBaseComponent
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int Health;
 
 	void ReadWriteBinary(FArchive& archive) override;

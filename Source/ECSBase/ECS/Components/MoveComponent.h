@@ -14,13 +14,13 @@ class ECSBASE_API UMoveComponent : public UBaseComponent
 	GENERATED_BODY()
 
 public:	
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float Speed;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FVector Direction;
 
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	FVector CurrentLocation;
 
 	virtual void BeginPlay() override;

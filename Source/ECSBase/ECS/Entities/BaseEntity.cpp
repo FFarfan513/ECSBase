@@ -19,6 +19,7 @@ void ABaseEntity::BeginPlay()
 void ABaseEntity::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
 	Super::EndPlay(EndPlayReason);
+
 	GETECSWORLD()->RemoveEntity(ID);
 	Filter.Empty();
 }
