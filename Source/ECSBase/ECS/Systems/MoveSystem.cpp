@@ -10,9 +10,8 @@ MoveSystem::MoveSystem()
 
 void MoveSystem::Update(float DeltaTime)
 {
-	for (auto& pair : Entities)
+	for (const auto& [id, entity] : Entities)
 	{
-		auto entity = pair.Value;
 		auto moveComp = entity->GetECSComponent<UMoveComponent>();
 
 		FVector heading = moveComp->Direction * moveComp->Speed * DeltaTime;
