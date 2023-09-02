@@ -29,8 +29,9 @@ void ABaseEntity::SetFilterTypes()
 	TInlineComponentArray<TObjectPtr<UBaseComponent>> ecsComponents;
 	GetComponents(ecsComponents);
 
+	Filter.Reserve(ecsComponents.Num());
 	for (auto& component : ecsComponents)
 	{
-		Filter.Add(component->GetClass());
+		Filter.Emplace(component->GetClass());
 	}
 }

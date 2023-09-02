@@ -6,7 +6,8 @@
 
 TimerSystem::TimerSystem()
 {
-	Filter.Add(UTimerComponent::StaticClass());
+	Filter.Reserve(1);
+	Filter.Emplace(UTimerComponent::StaticClass());
 }
 
 void TimerSystem::Update(float DeltaTime)

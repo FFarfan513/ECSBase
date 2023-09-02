@@ -8,9 +8,10 @@
 
 MovingPlatformSystem::MovingPlatformSystem()
 {
-	Filter.Add(UMovingPlatformComponent::StaticClass());
-	Filter.Add(UMoveComponent::StaticClass());
-	Filter.Add(UTimerComponent::StaticClass());
+	Filter.Reserve(3);
+	Filter.Emplace(UMovingPlatformComponent::StaticClass());
+	Filter.Emplace(UMoveComponent::StaticClass());
+	Filter.Emplace(UTimerComponent::StaticClass());
 }
 
 void MovingPlatformSystem::Update(float DeltaTime)

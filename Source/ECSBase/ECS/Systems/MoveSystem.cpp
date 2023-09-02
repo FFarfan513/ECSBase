@@ -5,7 +5,8 @@
 
 MoveSystem::MoveSystem()
 {
-	Filter.Add(UMoveComponent::StaticClass());
+	Filter.Reserve(1);
+	Filter.Emplace(UMoveComponent::StaticClass());
 }
 
 void MoveSystem::Update(float DeltaTime)
