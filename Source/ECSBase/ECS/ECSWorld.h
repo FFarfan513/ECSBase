@@ -16,7 +16,7 @@ class ECSBASE_API UECSWorld : public UGameInstanceSubsystem, public FTickableGam
 	GENERATED_BODY()
 	
 public:
-	TWeakObjectPtr<ABaseEntity> GetEntity(FString id);
+	TWeakObjectPtr<ABaseEntity> GetEntity(FString id) const;
 	void AddEntity(const TObjectPtr<ABaseEntity>& entity);
 	void RemoveEntity(FString id);
 

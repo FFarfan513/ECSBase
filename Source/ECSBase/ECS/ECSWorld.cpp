@@ -3,7 +3,7 @@
 #include "ECSWorld.h"
 #include "ECSSystemLoader.h"
 
-TWeakObjectPtr<ABaseEntity> UECSWorld::GetEntity(FString id)
+TWeakObjectPtr<ABaseEntity> UECSWorld::GetEntity(FString id) const
 {
 	return ECSEntities.FindRef(id);
 }
