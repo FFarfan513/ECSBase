@@ -21,7 +21,7 @@ public:
 
 	void SaveComponent(FString componentName, TArray<uint8> binaryData);
 
-	TArray<uint8> LoadComponent(FString componentName);
+	const TArray<uint8>* LoadComponent(FString componentName) const;
 
 	//// TODO: save savedComponentData contents to file
 	//void SaveGame();

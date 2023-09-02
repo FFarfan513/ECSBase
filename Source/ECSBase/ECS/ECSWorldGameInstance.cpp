@@ -20,7 +20,7 @@ void UECSWorldGameInstance::SaveComponent(FString componentName, TArray<uint8> b
 	}
 }
 
-TArray<uint8> UECSWorldGameInstance::LoadComponent(FString componentName)
+const TArray<uint8>* UECSWorldGameInstance::LoadComponent(FString componentName) const
 {
 	if (!componentName.IsEmpty())
 	{
@@ -29,5 +29,5 @@ TArray<uint8> UECSWorldGameInstance::LoadComponent(FString componentName)
 			return found->GetBinaryData();
 		}
 	}
-	return TArray<uint8>();
+	return nullptr;
 }

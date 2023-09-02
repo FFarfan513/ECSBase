@@ -32,10 +32,10 @@ void UBaseComponent::BeginPlay()
 		UE_LOG(LogTemp, Error, TEXT("Actor '%s' is not of type BaseEntity"), *GetOwner()->GetFullName());
 	}
 
-	TArray<uint8> componentData = GETECSGAMEINSTANCE()->LoadComponent(ComponentID);
-	if (!componentData.IsEmpty())
+	const TArray<uint8>* componentData = GETECSGAMEINSTANCE()->LoadComponent(ComponentID);
+	if (componentData)
 	{
-		FMemoryReader reader(componentData);
+		FMemoryReader reader(*componentData);
 		ReadWriteBinary(reader);
 	}
 }

@@ -16,7 +16,7 @@ public:
 
 	~FBinaryDataHolder();
 
-	FORCEINLINE const TArray<uint8> GetBinaryData() const { return Data; }
+	FORCEINLINE const TArray<uint8>* GetBinaryData() const { return &Data; }
 
 protected:
 	UPROPERTY()

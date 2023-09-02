@@ -3,9 +3,7 @@
 #include "BinaryDataHolder.h"
 
 FBinaryDataHolder::FBinaryDataHolder(TArray<uint8> binaryData)
-{
-	Data = binaryData;
-}
+	: Data(binaryData) { }
 
 FBinaryDataHolder::~FBinaryDataHolder()
 {
