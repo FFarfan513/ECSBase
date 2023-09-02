@@ -12,7 +12,7 @@ void UECSWorldGameInstance::Shutdown()
 	Super::Shutdown();
 }
 
-void UECSWorldGameInstance::SaveComponent(FString componentName, TArray<uint8> binaryData)
+void UECSWorldGameInstance::SaveComponent(const FString& componentName, const TArray<uint8>& binaryData)
 {
 	if (!componentName.IsEmpty())
 	{
@@ -20,7 +20,7 @@ void UECSWorldGameInstance::SaveComponent(FString componentName, TArray<uint8> b
 	}
 }
 
-const TArray<uint8>* UECSWorldGameInstance::LoadComponent(FString componentName) const
+const TArray<uint8>* UECSWorldGameInstance::LoadComponent(const FString& componentName) const
 {
 	if (!componentName.IsEmpty())
 	{

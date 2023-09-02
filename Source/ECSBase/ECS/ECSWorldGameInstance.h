@@ -19,9 +19,9 @@ public:
 
 	virtual void Shutdown() override;
 
-	void SaveComponent(FString componentName, TArray<uint8> binaryData);
+	void SaveComponent(const FString& componentName, const TArray<uint8>& binaryData);
 
-	const TArray<uint8>* LoadComponent(FString componentName) const;
+	const TArray<uint8>* LoadComponent(const FString& componentName) const;
 
 	//// TODO: save savedComponentData contents to file
 	//void SaveGame();
