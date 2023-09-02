@@ -12,7 +12,7 @@ struct ECSBASE_API FBinaryDataHolder
 public:
 	FBinaryDataHolder() = default;
 
-	FBinaryDataHolder(TArray<uint8> binaryData);
+	FBinaryDataHolder(const TArray<uint8>& binaryData);
 
 	~FBinaryDataHolder();
 

@@ -2,8 +2,10 @@
 
 #include "BinaryDataHolder.h"
 
-FBinaryDataHolder::FBinaryDataHolder(TArray<uint8> binaryData)
-	: Data(binaryData) { }
+FBinaryDataHolder::FBinaryDataHolder(const TArray<uint8>& binaryData)
+	: Data(binaryData)
+{
+}
 
 FBinaryDataHolder::~FBinaryDataHolder()
 {

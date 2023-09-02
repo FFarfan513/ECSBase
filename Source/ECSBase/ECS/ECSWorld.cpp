@@ -3,7 +3,7 @@
 #include "ECSWorld.h"
 #include "ECSSystemLoader.h"
 
-TWeakObjectPtr<ABaseEntity> UECSWorld::GetEntity(FString id) const
+TWeakObjectPtr<ABaseEntity> UECSWorld::GetEntity(const FString& id) const
 {
 	return ECSEntities.FindRef(id);
 }
@@ -27,7 +27,7 @@ void UECSWorld::AddEntity(const TObjectPtr<ABaseEntity>& entity)
 	}
 }
 
-void UECSWorld::RemoveEntity(FString id)
+void UECSWorld::RemoveEntity(const FString& id)
 {
 	if (ECSEntities.Contains(id))
 	{

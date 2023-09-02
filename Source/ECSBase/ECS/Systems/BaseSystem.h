@@ -13,7 +13,7 @@ public:
 
 	void AddEntity(const TObjectPtr<ABaseEntity>& entity);
 
-	int32 RemoveEntity(FString id);
+	int32 RemoveEntity(const FString& id);
 
 	FORCEINLINE const TSet<TSubclassOf<UBaseComponent>>& GetFilter() const { return Filter; }
 

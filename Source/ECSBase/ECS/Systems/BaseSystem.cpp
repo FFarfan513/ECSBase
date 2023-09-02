@@ -18,7 +18,7 @@ void BaseSystem::AddEntity(const TObjectPtr<ABaseEntity>& entity)
 	Entities.Add(entityID, entity);
 }
 
-int32 BaseSystem::RemoveEntity(FString id)
+int32 BaseSystem::RemoveEntity(const FString& id)
 {
 	return Entities.Remove(id);
 }
