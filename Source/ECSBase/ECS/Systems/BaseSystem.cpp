@@ -5,6 +5,7 @@
 BaseSystem::~BaseSystem()
 {
 	Filter.Empty();
+	Entities.Empty();
 }
 
 void BaseSystem::AddEntity(const TObjectPtr<ABaseEntity>& entity)

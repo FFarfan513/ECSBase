@@ -21,7 +21,7 @@ void ABaseEntity::EndPlay(const EEndPlayReason::Type EndPlayReason)
 	Super::EndPlay(EndPlayReason);
 
 	GETECSWORLD()->RemoveEntity(ID);
-	Filter.Empty();
+	Components.Empty();
 }
 
 void ABaseEntity::SetFilterTypes()
@@ -29,9 +29,9 @@ void ABaseEntity::SetFilterTypes()
 	TInlineComponentArray<TObjectPtr<UBaseComponent>> ecsComponents;
 	GetComponents(ecsComponents);
 
-	Filter.Reserve(ecsComponents.Num());
+	Components.Reserve(ecsComponents.Num());
 	for (auto& component : ecsComponents)
 	{
-		Filter.Emplace(component->GetClass());
+		Components.Emplace(component->GetClass(), component);
 	}
 }

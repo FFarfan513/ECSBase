@@ -69,11 +69,10 @@ void UECSWorld::Tick(float DeltaTime)
 
 bool UECSWorld::SystemShouldContainEntity(const TUniquePtr<BaseSystem>& system, const TObjectPtr<ABaseEntity>& entity) const
 {
-	auto& entityFilter = entity->GetFilter();
 	auto& systemFilter = system->GetFilter();
-	for (auto& systemType : systemFilter)
+	for (auto& componentType : systemFilter)
 	{
-		if (!entityFilter.Contains(systemType))
+		if (!entity->ContainsComponentType(componentType))
 		{
 			return false;
 		}

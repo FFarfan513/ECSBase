@@ -14,7 +14,7 @@ class ECSBASE_API UBaseComponent : public UActorComponent
 public:
 	UBaseComponent();
 
-	FORCEINLINE const FString GetComponentID() const { return ComponentID; }
+	FORCEINLINE const FString& GetComponentID() const { return ComponentID; }
 
 	virtual void ReadWriteBinary(FArchive& archive);
 	

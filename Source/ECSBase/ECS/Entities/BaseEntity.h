@@ -15,14 +15,14 @@ class ECSBASE_API ABaseEntity : public AActor
 public:
 	ABaseEntity();
 
-	FORCEINLINE const FString GetEntityID() const { return ID; }
+	FORCEINLINE const FString& GetEntityID() const { return ID; }
 
-	FORCEINLINE const TSet<TSubclassOf<UBaseComponent>>& GetFilter() const { return Filter; }
+	FORCEINLINE bool ContainsComponentType(TSubclassOf<UBaseComponent> type) const { return Components.Contains(type); }
 
 	template<class T> TObjectPtr<T> GetECSComponent() const
 	{
 		static_assert(TPointerIsConvertibleFromTo<T, const UBaseComponent>::Value, "'T' template parameter to GetECSComponent must be derived from UBaseComponent");
-		return FindComponentByClass<T>();
+		return (T*)Components.FindRef(T::StaticClass());
 	}
 
 protected:
@@ -35,7 +35,7 @@ protected:
 
 private:
 	UPROPERTY()
-	TSet<TSubclassOf<UBaseComponent>> Filter;
+	TMap<TSubclassOf<UBaseComponent>, TObjectPtr<UBaseComponent>> Components;
 
 	void SetFilterTypes();
 };
