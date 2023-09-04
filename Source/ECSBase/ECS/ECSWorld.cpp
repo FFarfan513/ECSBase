@@ -10,7 +10,7 @@ TWeakObjectPtr<ABaseEntity> UECSWorld::GetEntity(const FString& id) const
 
 void UECSWorld::AddEntity(const TObjectPtr<ABaseEntity>& entity)
 {
-	FString entityID = entity->GetEntityID();
+	const FString& entityID = entity->GetEntityID();
 	if (ECSEntities.Contains(entityID))
 	{
 		return;
@@ -18,7 +18,7 @@ void UECSWorld::AddEntity(const TObjectPtr<ABaseEntity>& entity)
 
 	ECSEntities.Add(entityID, entity);
 
-	for (auto& system : ECSSystems)
+	for (const TUniquePtr<BaseSystem>& system : ECSSystems)
 	{
 		if (SystemShouldContainEntity(system, entity))
 		{
@@ -31,7 +31,7 @@ void UECSWorld::RemoveEntity(const FString& id)
 {
 	if (ECSEntities.Contains(id))
 	{
-		for (auto& system : ECSSystems)
+		for (const TUniquePtr<BaseSystem>& system : ECSSystems)
 		{
 			system->RemoveEntity(id);
 		}
@@ -61,7 +61,7 @@ void UECSWorld::FinishDestroy()
 
 void UECSWorld::Tick(float DeltaTime)
 {
-	for (auto& system : ECSSystems)
+	for (const TUniquePtr<BaseSystem>& system : ECSSystems)
 	{
 		system->Update(DeltaTime);
 	}
@@ -69,8 +69,7 @@ void UECSWorld::Tick(float DeltaTime)
 
 bool UECSWorld::SystemShouldContainEntity(const TUniquePtr<BaseSystem>& system, const TObjectPtr<ABaseEntity>& entity) const
 {
-	auto& systemFilter = system->GetFilter();
-	for (auto& componentType : systemFilter)
+	for (const TSubclassOf<UBaseComponent>& componentType : system->GetFilter())
 	{
 		if (!entity->ContainsComponentType(componentType))
 		{

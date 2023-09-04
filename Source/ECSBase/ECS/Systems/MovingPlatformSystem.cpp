@@ -18,8 +18,8 @@ void MovingPlatformSystem::Update(float DeltaTime)
 {
 	for (const auto& [id, entity] : Entities)
 	{
-		auto timerComponent = entity->GetECSComponent<UTimerComponent>();
-		auto moveComponent = entity->GetECSComponent<UMoveComponent>();
+		UTimerComponent* timerComponent = entity->GetECSComponent<UTimerComponent>();
+		UMoveComponent* moveComponent = entity->GetECSComponent<UMoveComponent>();
 
 		if (!timerComponent->TimerActive)
 		{

@@ -15,9 +15,9 @@ void UBaseComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (auto entity = Cast<ABaseEntity>(GetOwner()))
+	if (const ABaseEntity* entity = Cast<ABaseEntity>(GetOwner()))
 	{
-		FString entityID = entity->GetEntityID();
+		const FString& entityID = entity->GetEntityID();
 		if (!entityID.IsEmpty())
 		{
 			ComponentID = entityID + "|" + GetClass()->GetName();

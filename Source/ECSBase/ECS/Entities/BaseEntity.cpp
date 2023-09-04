@@ -30,7 +30,7 @@ void ABaseEntity::SetFilterTypes()
 	GetComponents(ecsComponents);
 
 	Components.Reserve(ecsComponents.Num());
-	for (auto& component : ecsComponents)
+	for (const TObjectPtr<UBaseComponent>& component : ecsComponents)
 	{
 		Components.Emplace(component->GetClass(), component);
 	}

@@ -14,7 +14,7 @@ void TimerSystem::Update(float DeltaTime)
 {
 	for (const auto& [id, entity] : Entities)
 	{
-		auto timerComponent = entity->GetECSComponent<UTimerComponent>();
+		UTimerComponent* timerComponent = entity->GetECSComponent<UTimerComponent>();
 
 		if (timerComponent->TimerActive)
 		{

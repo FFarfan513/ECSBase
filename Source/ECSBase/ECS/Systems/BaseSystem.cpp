@@ -10,7 +10,7 @@ BaseSystem::~BaseSystem()
 
 void BaseSystem::AddEntity(const TObjectPtr<ABaseEntity>& entity)
 {
-	FString entityID = entity->GetEntityID();
+	const FString& entityID = entity->GetEntityID();
 	if (Entities.Contains(entityID))
 	{
 		UE_LOG(LogTemp, Error, TEXT("Attempting to add entity to System with duplicate ID '%s'"), *entityID);

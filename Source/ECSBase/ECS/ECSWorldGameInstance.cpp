@@ -24,7 +24,7 @@ const TArray<uint8>* UECSWorldGameInstance::LoadComponent(const FString& compone
 {
 	if (!componentName.IsEmpty())
 	{
-		if (auto found = savedComponentData.Find(componentName))
+		if (const FBinaryDataHolder* found = savedComponentData.Find(componentName))
 		{
 			return found->GetBinaryData();
 		}
