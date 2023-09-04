@@ -24,7 +24,7 @@ void UBaseComponent::BeginPlay()
 		}
 		else
 		{
-			UE_LOG(LogTemp, Error, TEXT("Entity actor %s has empty Entity ID"), *entity->GetFullName());
+			UE_LOG(LogTemp, Error, TEXT("Entity actor %s has blank Entity ID"), *entity->GetFullName());
 		}
 	}
 	else
@@ -32,8 +32,7 @@ void UBaseComponent::BeginPlay()
 		UE_LOG(LogTemp, Error, TEXT("Actor '%s' is not of type BaseEntity"), *GetOwner()->GetFullName());
 	}
 
-	const TArray<uint8>* componentData = GETECSGAMEINSTANCE()->LoadComponent(ComponentID);
-	if (componentData)
+	if (const TArray<uint8>* componentData = GETECSGAMEINSTANCE()->LoadComponent(ComponentID))
 	{
 		FMemoryReader reader(*componentData);
 		ReadWriteBinary(reader);
