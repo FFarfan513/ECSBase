@@ -3,11 +3,7 @@
 #include "MoveSystem.h"
 #include <ECSBase/ECS/Components/MoveComponent.h>
 
-MoveSystem::MoveSystem()
-{
-	Filter.Reserve(1);
-	Filter.Emplace(UMoveComponent::StaticClass());
-}
+MoveSystem::MoveSystem() : BaseSystem(UMoveComponent::StaticClass()) { }
 
 void MoveSystem::Update(float DeltaTime)
 {

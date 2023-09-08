@@ -4,11 +4,7 @@
 #include "TimerSystem.h"
 #include <ECSBase/ECS/Components/TimerComponent.h>
 
-TimerSystem::TimerSystem()
-{
-	Filter.Reserve(1);
-	Filter.Emplace(UTimerComponent::StaticClass());
-}
+TimerSystem::TimerSystem() : BaseSystem(UTimerComponent::StaticClass()) { }
 
 void TimerSystem::Update(float DeltaTime)
 {

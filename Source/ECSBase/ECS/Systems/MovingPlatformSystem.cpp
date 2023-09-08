@@ -7,12 +7,7 @@
 #include <ECSBase/ECS/Components/TimerComponent.h>
 
 MovingPlatformSystem::MovingPlatformSystem()
-{
-	Filter.Reserve(3);
-	Filter.Emplace(UMovingPlatformComponent::StaticClass());
-	Filter.Emplace(UMoveComponent::StaticClass());
-	Filter.Emplace(UTimerComponent::StaticClass());
-}
+	: BaseSystem(UMovingPlatformComponent::StaticClass(), UMoveComponent::StaticClass(), UTimerComponent::StaticClass()) { }
 
 void MovingPlatformSystem::Update(float DeltaTime)
 {
