@@ -10,13 +10,9 @@ class ECSBASE_API BaseSystem
 {
 public:
 	template<typename... ComponentTypes> BaseSystem(ComponentTypes... components)
+		: Filter({ components... })
 	{
 		static_assert(std::conjunction<std::is_convertible<ComponentTypes, TSubclassOf<UBaseComponent>>...>::value, "BaseSystem constructor arguments must be derived from UBaseComponent");
-		Filter.Reserve(sizeof...(ComponentTypes));
-		for (auto component : { components... })
-		{
-			Filter.Emplace(component);
-		}
 	}
 
 	virtual ~BaseSystem();
