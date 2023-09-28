@@ -6,7 +6,8 @@
 #include "Components/ActorComponent.h"
 #include "BaseComponent.generated.h"
 
-UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
+UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent),
+	hideCategories = (Tags, ComponentTick, ComponentReplication, Activation, Cooking, AssetUserData, Replication, Collision))
 class ECSBASE_API UBaseComponent : public UActorComponent
 {
 	GENERATED_BODY()
