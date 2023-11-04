@@ -1,7 +1,7 @@
 {
-	"BuildId": "25360045",
+	"BuildId": "27405482",
 	"Modules": 
 	{
-		"ECSBase": "UnrealEditor-ECSBase-1081.dll"
+		"ECSBase": "UnrealEditor-ECSBase.dll"
 	}
 }
