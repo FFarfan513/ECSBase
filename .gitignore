@@ -383,6 +383,8 @@ FodyWeavers.xsd
 *.app
 *.log
 *.pdb
+Binaries/*
+DerivedDataCache/*
 Intermediate/*
 Saved/*
 .vs/*
